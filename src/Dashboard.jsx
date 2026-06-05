@@ -13,6 +13,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  Cell,
 } from "recharts";
 
 function Dashboard({ setIsLoggedIn }) {
@@ -345,6 +346,17 @@ console.log(error);
       })
     );
 
+    const COLORS = [
+  "#00E676",
+  "#2979FF",
+  "#FF9100",
+  "#E91E63",
+  "#9C27B0",
+  "#FFD600",
+  "#F44336",
+  "#00BCD4",
+]
+
     const worksheet =
       XLSX.utils.json_to_sheet(
         data
@@ -590,11 +602,18 @@ JSON.parse(
             >
               <PieChart>
                 <Pie
-                  data={categoryData}
-                  dataKey="value"
-                  nameKey="name"
-                  outerRadius={100}
-                />
+  data={categoryData}
+  dataKey="value"
+  nameKey="name"
+  outerRadius={100}
+>
+  {categoryData.map((entry, index) => (
+    <Cell
+      key={`cell-${index}`}
+      fill={COLORS[index % COLORS.length]}
+    />
+  ))}
+</Pie>
 
                 <Tooltip />
               </PieChart>
