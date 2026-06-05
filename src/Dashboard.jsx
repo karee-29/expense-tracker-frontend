@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
@@ -589,7 +588,7 @@ JSON.parse(
               height="100%"
             >
               <PieChart>
-               <Pie<Pie
+                <Pie
                   data={categoryData}
                   dataKey="value"
                   nameKey="name"
@@ -721,4 +720,6 @@ JSON.parse(
 }
 
 export default Dashboard;
+
+
 
