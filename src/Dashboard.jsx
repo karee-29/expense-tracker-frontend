@@ -589,12 +589,23 @@ JSON.parse(
               height="100%"
             >
               <PieChart>
-                <Pie
-                  data={categoryData}
-                  dataKey="value"
-                  nameKey="name"
-                  outerRadius={100}
-                />
+<Pie
+  data={categoryPieData}
+  dataKey="value"
+  nameKey="name"
+  cx="50%"
+  cy="50%"
+  outerRadius={120}
+>
+  {categoryPieData.map((entry, index) => (
+    <Cell
+      key={`cell-${index}`}
+      fill={
+        COLORS[index % COLORS.length]
+      }
+    />
+  ))}
+</Pie>
 
                 <Tooltip />
               </PieChart>
